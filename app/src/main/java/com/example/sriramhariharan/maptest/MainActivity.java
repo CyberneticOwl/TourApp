@@ -16,7 +16,7 @@ public class MainActivity extends ActionBarActivity {
     ViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
-    CharSequence Titles[]={"Home","Events"};
+    CharSequence Titles[]={"Tour","Locations"};
     int Numboftabs =2;
 
     @Override
@@ -28,6 +28,7 @@ public class MainActivity extends ActionBarActivity {
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar.setSubtitle("<Name WIP>");
         setSupportActionBar(toolbar);
 
 
@@ -57,12 +58,13 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-/*
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        menu.add("Settings");
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -73,11 +75,14 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+
+        if (id == 0) {
+
             return true;
         }
 
+
         return super.onOptionsItemSelected(item);
     }
-    */
+
 }
