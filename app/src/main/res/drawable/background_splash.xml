@@ -7,7 +7,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/touricon"/>
+            android:src="@drawable/touricon"/>
     </item>
 
 </layer-list>
