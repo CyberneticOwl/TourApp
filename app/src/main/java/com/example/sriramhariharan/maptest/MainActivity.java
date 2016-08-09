@@ -1,4 +1,4 @@
-package com.example.sriramhariharan.maptest;
+package com.example.sriramhariharan.maptest; //TEST COMMENT
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
