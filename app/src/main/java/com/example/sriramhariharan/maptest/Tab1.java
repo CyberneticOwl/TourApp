@@ -1,6 +1,7 @@
 package com.example.sriramhariharan.maptest;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,4 +19,6 @@ public class Tab1 extends Fragment {
         View v =inflater.inflate(R.layout.tab_1,container,false);
         return v;
     }
+
+
 }

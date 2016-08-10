@@ -1,11 +1,13 @@
 package com.example.sriramhariharan.maptest; //TEST COMMENT
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -28,8 +30,9 @@ public class MainActivity extends ActionBarActivity {
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setSubtitle("<Name WIP>");
+
         setSupportActionBar(toolbar);
+
 
 
         // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
@@ -56,6 +59,11 @@ public class MainActivity extends ActionBarActivity {
 
 
 
+    }
+
+    public void generateClick(View view){
+        Intent intent = new Intent(this, TourOptions.class);
+        startActivity(intent);
     }
 
 
