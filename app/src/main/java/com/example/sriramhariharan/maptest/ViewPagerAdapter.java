@@ -1,4 +1,5 @@
 package com.example.sriramhariharan.maptest;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -13,7 +14,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
 
     // Build a Constructor and assign the passed Values to appropriate values in the class
-    public ViewPagerAdapter(FragmentManager fm,CharSequence mTitles[], int mNumbOfTabsumb) {
+    public ViewPagerAdapter(FragmentManager fm, CharSequence mTitles[], int mNumbOfTabsumb) {
         super(fm);
 
         this.Titles = mTitles;
@@ -25,29 +26,25 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        if(position == 0) // if the position is 0 we are returning the First tab
+        if (position == 0) // if the position is 0 we are returning the First tab
         {
             Tab1 tab1 = new Tab1();
             return tab1;
-        }
-        else             // As we are having 2 tabs if the position is now 0 it must be 1 so we are returning second tab
+        } else             // As we are having 2 tabs if the position is now 0 it must be 1 so we are returning second tab
         {
             Tab2 tab2 = new Tab2();
             return tab2;
         }
 
-
     }
 
     // This method return the titles for the Tabs in the Tab Strip
-
     @Override
     public CharSequence getPageTitle(int position) {
         return Titles[position];
     }
 
     // This method return the Number of tabs for the tabs Strip
-
     @Override
     public int getCount() {
         return NumbOfTabs;
