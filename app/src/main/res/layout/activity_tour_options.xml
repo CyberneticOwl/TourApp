@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="How would you like your tour to be?"
-            android:id="@+id/textView4"
+            android:id="@+id/tourOptionText"
             android:layout_marginTop="57dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -37,9 +37,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Round Trip"
-            android:id="@+id/checkBox"
+            android:id="@+id/roundTripBox"
             android:layout_marginTop="30dp"
-            android:layout_below="@+id/textView4"
+            android:layout_below="@+id/tourOptionText"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -47,18 +47,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="One Way Trip"
-            android:id="@+id/checkBox2"
-            android:layout_alignTop="@+id/checkBox"
-            android:layout_toRightOf="@+id/textView4"
-            android:layout_toEndOf="@+id/textView4"
-            android:layout_alignBaseline="@+id/checkBox" />
+            android:id="@+id/onewayTripBox"
+            android:layout_alignTop="@+id/roundTripBox"
+            android:layout_toRightOf="@+id/tourOptionText"
+            android:layout_toEndOf="@+id/tourOptionText"
+            android:layout_alignBaseline="@+id/roundTripBox"
+            android:checked="false" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="What do you want to Experience?"
-            android:id="@+id/textView7"
-            android:layout_marginBottom="15dp"
+            android:text="Add any locations you would like to visit."
+            android:id="@+id/addLocationsText"
             android:textColor="@color/colorPrimary"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
@@ -68,8 +68,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Everything"
-            android:id="@+id/checkBox3"
-            android:layout_below="@+id/textView7"
+            android:id="@+id/everyLocationBox"
+            android:layout_marginTop="28dp"
+            android:layout_below="@+id/addLocationsText"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:checked="false" />
@@ -78,19 +79,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Parks"
-            android:id="@+id/checkBox4"
+            android:id="@+id/parksBox"
             android:checked="false"
-            android:layout_alignBottom="@+id/button3"
-            android:layout_toRightOf="@+id/checkBox"
-            android:layout_toEndOf="@+id/checkBox"
-            android:layout_alignBaseline="@+id/checkBox3" />
+            android:layout_alignBottom="@+id/customLocationButton"
+            android:layout_toRightOf="@+id/roundTripBox"
+            android:layout_toEndOf="@+id/roundTripBox"
+            android:layout_alignBaseline="@+id/everyLocationBox" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Culture"
-            android:id="@+id/checkBox5"
-            android:layout_below="@+id/checkBox3"
+            android:id="@+id/cultureBox"
+            android:layout_below="@+id/everyLocationBox"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:checked="false" />
@@ -99,20 +100,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Monuments"
-            android:id="@+id/checkBox6"
+            android:id="@+id/monumentsBox"
             android:checked="false"
-            android:layout_above="@+id/checkBox8"
-            android:layout_alignLeft="@+id/checkBox4"
-            android:layout_alignStart="@+id/checkBox4"
-            android:layout_alignBaseline="@+id/checkBox5" />
+            android:layout_above="@+id/beachesBox"
+            android:layout_alignLeft="@+id/parksBox"
+            android:layout_alignStart="@+id/parksBox"
+            android:layout_alignBaseline="@+id/cultureBox" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Museums"
-            android:id="@+id/checkBox7"
+            android:id="@+id/museumsBox"
             android:checked="false"
-            android:layout_below="@+id/checkBox5"
+            android:layout_below="@+id/cultureBox"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -120,10 +121,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Where would you like to start your tour?"
-            android:id="@+id/textView8"
+            android:id="@+id/tourStartText"
             android:layout_marginTop="28dp"
             android:textColor="@color/colorPrimary"
-            android:layout_below="@+id/checkBox"
+            android:layout_below="@+id/roundTripBox"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -131,45 +132,69 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Current Location"
-            android:id="@+id/checkBox9"
+            android:id="@+id/currentLocationBox"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="false"
             android:layout_alignParentEnd="false"
-            android:layout_below="@+id/textView8"
-            android:layout_marginTop="30dp" />
+            android:layout_below="@+id/tourStartText"
+            android:layout_marginTop="40dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Custom Start"
-            android:id="@+id/button2"
+            android:text="Add Custom Start"
+            android:id="@+id/customStartButton"
             android:background="@color/colorPrimary"
             android:textColor="#ffffff"
             android:padding="5dp"
-            android:layout_alignBottom="@+id/checkBox9"
-            android:layout_alignRight="@+id/button3"
-            android:layout_alignEnd="@+id/button3" />
+            android:layout_alignBottom="@+id/currentLocationBox"
+            android:layout_alignRight="@+id/customLocationButton"
+            android:layout_alignEnd="@+id/customLocationButton" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Custom Location"
-            android:id="@+id/button3"
+            android:text="Add Custom Location"
+            android:id="@+id/customLocationButton"
             android:background="@color/colorPrimary"
             android:textColor="#ffffff"
             android:padding="5dp"
-            android:layout_toEndOf="@+id/textView8"
-            android:layout_alignBaseline="@+id/checkBox6" />
+            android:layout_toEndOf="@+id/tourStartText"
+            android:layout_alignBaseline="@+id/monumentsBox" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Beaches"
-            android:id="@+id/checkBox8"
+            android:id="@+id/beachesBox"
             android:checked="false"
-            android:layout_alignTop="@+id/checkBox7"
-            android:layout_alignLeft="@+id/checkBox4"
-            android:layout_alignStart="@+id/checkBox4" />
+            android:layout_alignTop="@+id/museumsBox"
+            android:layout_alignLeft="@+id/parksBox"
+            android:layout_alignStart="@+id/parksBox" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Locations within how many miles?"
+            android:id="@+id/milesText"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="46dp"
+            android:layout_below="@+id/museumsBox"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:layout_alignBottom="@+id/milesText"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/addLocationsText"
+            android:layout_toEndOf="@+id/addLocationsText"
+            android:layout_alignBaseline="@+id/milesText" />
 
     </RelativeLayout>
 
