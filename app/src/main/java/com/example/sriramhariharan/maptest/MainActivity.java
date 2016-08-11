@@ -61,7 +61,7 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    public void generateClick(View view){
+    public void createClick(View view){
         Intent intent = new Intent(this, TourOptions.class);
         startActivity(intent);
     }
