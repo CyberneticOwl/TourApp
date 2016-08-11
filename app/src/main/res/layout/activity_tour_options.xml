@@ -188,13 +188,25 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/milesInput"
             android:layout_alignBottom="@+id/milesText"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_toRightOf="@+id/addLocationsText"
             android:layout_toEndOf="@+id/addLocationsText"
             android:layout_alignBaseline="@+id/milesText" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Generate Tour"
+            android:id="@+id/generateButton"
+            android:background="@color/colorPrimaryDark"
+            android:padding="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/milesInput"
+            android:layout_alignEnd="@+id/milesInput"
+            android:textColor="#ffffff" />
 
     </RelativeLayout>
 
