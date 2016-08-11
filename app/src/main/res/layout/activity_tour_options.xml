@@ -56,8 +56,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add any locations you would like to visit."
+            android:text="What do you want to Experience?"
             android:id="@+id/textView7"
+            android:layout_marginBottom="15dp"
             android:textColor="@color/colorPrimary"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
@@ -68,7 +69,6 @@
             android:layout_height="wrap_content"
             android:text="Everything"
             android:id="@+id/checkBox3"
-            android:layout_marginTop="28dp"
             android:layout_below="@+id/textView7"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -136,12 +136,12 @@
             android:layout_alignParentStart="false"
             android:layout_alignParentEnd="false"
             android:layout_below="@+id/textView8"
-            android:layout_marginTop="40dp" />
+            android:layout_marginTop="30dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Custom Start"
+            android:text="Custom Start"
             android:id="@+id/button2"
             android:background="@color/colorPrimary"
             android:textColor="#ffffff"
@@ -153,7 +153,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Custom Location"
+            android:text=" Custom Location"
             android:id="@+id/button3"
             android:background="@color/colorPrimary"
             android:textColor="#ffffff"
