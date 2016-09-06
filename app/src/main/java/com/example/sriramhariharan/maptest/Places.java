@@ -1,8 +1,5 @@
 package com.example.sriramhariharan.maptest;
 
-/**
- * Created by s711093 on 8/29/2016.
- */
 import android.app.ListActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -21,6 +18,9 @@ import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+/**
+ * Created by User1 on 8/29/2016.
+ */
 public class Places extends ListActivity {
     ArrayList<GooglePlace> venuesList;
 
@@ -45,7 +45,7 @@ public class Places extends ListActivity {
         new googleplaces().execute();
     }
 
-    private class googleplaces extends AsyncTask<View,Void,String> {
+    private class googleplaces extends AsyncTask<View, Void, String> {
 
         String temp;
 
@@ -85,8 +85,8 @@ public class Places extends ListActivity {
 
                 // set the results to the list
                 // and show them in the xml
-                myAdapter = new ArrayAdapter(Places.this, R.layout.row_layout, R.id.listText, listTitle);
-                setListAdapter(myAdapter);
+                //myAdapter = new ArrayAdapter(Places.this, R.layout.row_layout, R.id.listText, listTitle);
+                //setListAdapter(myAdapter);
             }
         }
     }
