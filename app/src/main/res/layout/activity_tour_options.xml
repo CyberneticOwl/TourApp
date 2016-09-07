@@ -134,6 +134,7 @@
             android:text="My Current Location"
             android:id="@+id/currentLocationBox"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="false"
             android:layout_alignParentStart="false"
             android:layout_alignParentEnd="false"
             android:layout_below="@+id/tourStartText"
@@ -159,6 +160,7 @@
             android:background="@color/colorPrimary"
             android:textColor="#ffffff"
             android:padding="5dp"
+            android:layout_toRightOf="@+id/tourStartText"
             android:layout_toEndOf="@+id/tourStartText"
             android:layout_alignBaseline="@+id/monumentsBox" />
 
@@ -201,6 +203,7 @@
             android:layout_height="wrap_content"
             android:text="Generate Tour"
             android:id="@+id/generateButton"
+            android:onClick="generateClick"
             android:background="@color/colorPrimaryDark"
             android:padding="10dp"
             android:layout_alignParentBottom="true"

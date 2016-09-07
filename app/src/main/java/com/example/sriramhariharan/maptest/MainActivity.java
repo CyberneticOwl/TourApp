@@ -62,7 +62,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void createClick(View view){
-        Intent intent = new Intent(this, MapsActivity.class);
+        Intent intent = new Intent(this, TourOptions.class);
         startActivity(intent);
     }
 
