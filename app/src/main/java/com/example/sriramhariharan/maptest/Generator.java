@@ -1,18 +1,20 @@
 package com.example.sriramhariharan.maptest;
 
+import java.util.ArrayList;
+
 /**
  * Created by User1 on 8/29/2016.
  */
 public class Generator {
-    /*public static ArrayList<Place> getTour(double maxDistance, double lat, double lon) {
+    public static ArrayList<Place> getTour(double maxDistance, double lat, double lon) {
         ArrayList<Place> tour = new ArrayList<Place>();
-        ArrayList<Place> locations = getLocations();
+        ArrayList<Place> locations = Values.allplaces;
         int i = 0;
-        while(i < locations.size())
+        /*while(i < locations.size())
             if(isMatch(locations.get(i)))
                 ++i;
             else
-                locations.remove(i);
+                locations.remove(i);*/
         double traveled = 0;
         tour.add(new Place("Start", "", "", lat, lon, ""));
 
@@ -83,5 +85,5 @@ public class Generator {
         if(Values.entertainment && loc.getTags().contains("entertainment"))
             return true;
         return false;
-    }*/
+    }
 }

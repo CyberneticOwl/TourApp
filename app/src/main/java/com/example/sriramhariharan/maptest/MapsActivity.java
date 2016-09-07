@@ -15,12 +15,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -58,7 +55,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public TextView nametxt;
     public TextView desctxt;
     private static View rootview;
-    private static ListView yourListView;
+    //private static ListView yourListView;
     TextToSpeech tts;
     public static ArrayList<Polyline> poly = new ArrayList<Polyline>();
     public static ArrayList<Marker> markers = new ArrayList<Marker>();
@@ -69,7 +66,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     ArrayList<LatLng> markerPoints;
     GoogleApiClient mGoogleApiClient;
     Button button;
-    LocationAdapter la;
+    //LocationAdapter la;
     Intent intent;
     public static boolean generated = false;
     private String key = "key=AIzaSyCf8KGuXLYGU8UNfTvcKoVagcMtWiY65dA";
@@ -77,15 +74,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void addItems(Place x) {
         places.add(x);
-        la.notifyDataSetChanged();
+        //la.notifyDataSetChanged();
     }
     public void addItems(Place x,int index) {
         places.add(index, x);
-        la.notifyDataSetChanged();
+        //la.notifyDataSetChanged();
     }
     public void removeItems(int index) {
         places.remove(index);
-        la.notifyDataSetChanged();
+        //la.notifyDataSetChanged();
     }
     Polyline currpath;
 
@@ -93,9 +90,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tour);
-        yourListView = (ListView)findViewById(R.id.list);
-        intent = new Intent(this, MoreInfo.class);
+        setContentView(R.layout.activity_maps);
+        //yourListView = (ListView)findViewById(R.id.list);
+        //intent = new Intent(this, MoreInfo.class);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         // Place pl = new Place("hello","hello,","hello",50,50,"HELLO");
         //  places.add(pl);
@@ -117,7 +114,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        tts=new TextToSpeech(TourActivity.this, new TextToSpeech.OnInitListener() {
+        tts=new TextToSpeech(MapsActivity.this, new TextToSpeech.OnInitListener() {
 
             @Override
             public void onInit(int status) {
@@ -293,13 +290,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 //LatLng latLng = new LatLng(29.7599563, -95.3756);
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 19);
                 map.animateCamera(cameraUpdate);  /*                    UNCOMMENT THIS WHEN DONE TESTING*/
-                places = Generator.getTour(Values.range, mLastLocation.getLatitude(), mLastLocation.getLongitude());
+                new PlaceGetter(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+                /*places = Generator.getTour(Values.range, mLastLocation.getLatitude(), mLastLocation.getLongitude());
                 if (places.size() > 0) {
                     places.add(places.get(0));
                     places.remove(0);
-                }
+                }*/
                 // places = Generator.getTour(Values.range,29.7522,-95.3756);
-                la = new LocationAdapter(getApplicationContext(), places);
+                /*la = new LocationAdapter(getApplicationContext(), places);
                 yourListView.setAdapter(la);
                 runOnUiThread(new Runnable() {
                     public void run() {
@@ -312,7 +310,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         intent.putExtra("info",places.get(position).getDescription());
                         startActivity(intent);
                     }
-                });
+                });*/
                 for (Place p : places) {
                     putMarker(p.getLatitude(), p.getLongitude(), "red", p.getName());
                 }
@@ -327,7 +325,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if(i==1)createPath2(places.get(i-1),places.get(i),"hl");
                 else createPath2(places.get(i-1),places.get(i),"norm");
             }*/
-                generated = true;
             }
         }
     }
@@ -503,8 +500,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             places.remove(0);
         } else if(places.size()==1 && Math.abs(location.getLatitude()-places.get(0).getLatitude())<=.0001 &&
                 Math.abs(location.getLongitude()-places.get(0).getLongitude())<=.0001){
-            Intent intent = new Intent(this, Finish.class);
-            startActivity(intent);
+            /* FINISH INTENT HERE, ADD WHEN READY */
+            //Intent intent = new Intent(this, Finish.class);
+            //startActivity(intent);
             places.remove(0);
             //AddActivity Here
         }
@@ -649,11 +647,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
 
-
+    /* MoreInfo Here
     public void onClick(View view){
         Intent myIntent = new Intent(TourActivity.this, MoreInfo.class);
         startActivity(myIntent);
-    }
+    } */
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.

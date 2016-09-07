@@ -15,6 +15,11 @@ public class Place {
 		this.longitude = longitude;
 		this.description = description;
 	}
+	public Place(String name, double latitude, double longitude) {
+		this.name = name;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	}
 
 	public String getName() {
 		return name;
