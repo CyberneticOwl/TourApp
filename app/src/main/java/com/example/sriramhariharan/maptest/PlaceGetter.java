@@ -67,6 +67,7 @@ public class PlaceGetter extends AsyncTask<View, Void, String> {
                 Values.allplaces.add(new Place(venuesList.get(i).getName(),venuesList.get(i).coord.latitude,venuesList.get(i).coord.longitude));
             }
             Values.places = Generator.getTour(Double.parseDouble(radius), Double.parseDouble(latitude), Double.parseDouble(longtitude));
+            MapsActivity.places = Values.places;
             /*ArrayList<String> listTitle = new ArrayList<String>();
 
             for (int i = 0; i < venuesList.size(); i++) {
@@ -79,7 +80,7 @@ public class PlaceGetter extends AsyncTask<View, Void, String> {
             // and show them in the xml
             //myAdapter = new ArrayAdapter(Places.this, R.layout.row_layout, R.id.listText, listTitle);
             //setListAdapter(myAdapter);
-            MapsActivity.generated = true;
+            MapsActivity.generated = 1;
         }
     }
     public static String makeCall(String url) {
@@ -132,8 +133,8 @@ public class PlaceGetter extends AsyncTask<View, Void, String> {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     GooglePlace poi = new GooglePlace();
                     if (jsonArray.getJSONObject(i).has("geometry")) {
-                        if (jsonArray.getJSONObject(i).has("location")) {
-                            poi.setCoord(Double.parseDouble(jsonArray.getJSONObject(i).optString("lat")),Double.parseDouble(jsonArray.getJSONObject(i).optString("lng")));
+                        if (jsonArray.getJSONObject(i).getJSONObject("geometry").has("location")) {
+                            poi.setCoord(Double.parseDouble(jsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lat")),Double.parseDouble(jsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lng")));
                         }
                     }
                     if (jsonArray.getJSONObject(i).has("name")) {

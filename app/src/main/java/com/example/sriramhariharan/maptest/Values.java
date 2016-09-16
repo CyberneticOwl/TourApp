@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class Values {
 
    public static double range = 0;
- public static ArrayList<Place> places;
-    public static ArrayList<Place> allplaces;
+ public static ArrayList<Place> places = new ArrayList<Place>();
+    public static ArrayList<Place> allplaces = new ArrayList<Place>();
    public static boolean history = false;
     public static boolean culture = false;
     public static boolean art = false;

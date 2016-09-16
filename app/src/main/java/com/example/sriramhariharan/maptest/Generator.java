@@ -16,9 +16,9 @@ public class Generator {
             else
                 locations.remove(i);*/
         double traveled = 0;
-        tour.add(new Place("Start", "", "", lat, lon, ""));
-
-        while(true) {
+        locations.add(new Place("Start", "", "", lat, lon, ""));
+        return locations;
+        /*while(true) {
             if(locations.size() == 0)
                 return tour;
             Place min = locations.get(0);
@@ -36,7 +36,7 @@ public class Generator {
                 traveled += dist;
             } else
                 return tour;
-        }
+        }*/
     }
 
     public static double getDistance(Place l1, Place l2) {

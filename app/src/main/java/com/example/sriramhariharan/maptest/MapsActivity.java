@@ -68,7 +68,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Button button;
     //LocationAdapter la;
     Intent intent;
-    public static boolean generated = false;
+    public static int generated = 0;
     private String key = "key=AIzaSyCf8KGuXLYGU8UNfTvcKoVagcMtWiY65dA";
 
 
@@ -91,29 +91,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        //yourListView = (ListView)findViewById(R.id.list);
-        //intent = new Intent(this, MoreInfo.class);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        // Place pl = new Place("hello","hello,","hello",50,50,"HELLO");
-        //  places.add(pl);
-        //   la = new LocationAdapter(getApplicationContext(),places);
-        //   yourListView.setAdapter(la);
-        /*button = (Button) findViewById(R.id.button12);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                poly.get(poly.size()-1).remove();
-                poly.remove(poly.size()-1);
-                markers.get(0).remove();
-                markers.remove(0);
-                ConvertTextToSpeech(places.get(0).getDescription());
-                places.remove(0);
-            }
-        });*/
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
         tts=new TextToSpeech(MapsActivity.this, new TextToSpeech.OnInitListener() {
 
             @Override
@@ -198,13 +185,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     createPath();
                 }
             });*/
-            if (mGoogleApiClient == null) {
-                mGoogleApiClient = new GoogleApiClient.Builder(this)
-                        .addConnectionCallbacks(this)
-                        .addOnConnectionFailedListener(this)
-                        .addApi(LocationServices.API)
-                        .build();
-            }
         }
     }
 
@@ -277,7 +257,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        if(!generated) {
+        if(generated==0) {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
@@ -290,41 +270,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 //LatLng latLng = new LatLng(29.7599563, -95.3756);
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 19);
                 map.animateCamera(cameraUpdate);  /*                    UNCOMMENT THIS WHEN DONE TESTING*/
-                new PlaceGetter(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-                /*places = Generator.getTour(Values.range, mLastLocation.getLatitude(), mLastLocation.getLongitude());
-                if (places.size() > 0) {
-                    places.add(places.get(0));
-                    places.remove(0);
-                }*/
-                // places = Generator.getTour(Values.range,29.7522,-95.3756);
-                /*la = new LocationAdapter(getApplicationContext(), places);
-                yourListView.setAdapter(la);
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        la.notifyDataSetChanged();
-                    }});
-                yourListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        intent.putExtra("title", places.get(position).getName());
-                        intent.putExtra("info",places.get(position).getDescription());
-                        startActivity(intent);
-                    }
-                });*/
-                for (Place p : places) {
-                    putMarker(p.getLatitude(), p.getLongitude(), "red", p.getName());
-                }
-                for (int i = places.size() - 1; i > 0; i--) {
-                    createPath2(places.get(i - 1), places.get(i), "norm");
-                }
-                if (places.size() > 1) {
-                    //nametxt.setText(places.get(1).getName());
-                    //desctxt.setText(places.get(1).getDescription());
-                }
-            /*for(int i=1;i<places.size()-1;i++){
-                if(i==1)createPath2(places.get(i-1),places.get(i),"hl");
-                else createPath2(places.get(i-1),places.get(i),"norm");
-            }*/
+                new PlaceGetter(mLastLocation.getLatitude(), mLastLocation.getLongitude()).execute();
             }
         }
     }
@@ -490,6 +436,43 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Log.e("onLocationChanged", "called");
         /*CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(point, 19);
         map.animateCamera(cameraUpdate); /* UNCOMMENT THIS WHEN DONE TESTING */
+        if(generated==1){
+                /*places = Generator.getTour(Values.range, mLastLocation.getLatitude(), mLastLocation.getLongitude());
+                if (places.size() > 0) {
+                    places.add(places.get(0));
+                    places.remove(0);
+                }*/
+            // places = Generator.getTour(Values.range,29.7522,-95.3756);
+                /*la = new LocationAdapter(getApplicationContext(), places);
+                yourListView.setAdapter(la);
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        la.notifyDataSetChanged();
+                    }});
+                yourListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        intent.putExtra("title", places.get(position).getName());
+                        intent.putExtra("info",places.get(position).getDescription());
+                        startActivity(intent);
+                    }
+                });*/
+            for (Place p : places) {
+                putMarker(p.getLatitude(), p.getLongitude(), "red", p.getName());
+            }
+            for (int i = places.size() - 1; i > 0; i--) {
+                createPath2(places.get(i - 1), places.get(i), "norm");
+            }
+            if (places.size() > 1) {
+                //nametxt.setText(places.get(1).getName());
+                //desctxt.setText(places.get(1).getDescription());
+            }
+            /*for(int i=1;i<places.size()-1;i++){
+                if(i==1)createPath2(places.get(i-1),places.get(i),"hl");
+                else createPath2(places.get(i-1),places.get(i),"norm");
+            }*/
+            generated = 2;
+        }
         if(places.size()>=2 && Math.abs(location.getLatitude()-places.get(0).getLatitude())<=.0001 &&
                 Math.abs(location.getLongitude()-places.get(0).getLongitude())<=.0001 && poly.size()>0 && markers.size()>0){
             poly.get(poly.size()-1).remove();
