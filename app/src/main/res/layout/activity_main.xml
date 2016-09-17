@@ -33,6 +33,7 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:id="@+id/pager"
             android:layout_weight="1.75"
             android:layout_marginBottom="10dp">
 
@@ -67,7 +68,7 @@
         android:layout_alignParentBottom="true"
         android:textColor="#ffffff"
         android:textStyle="bold"
-        android:background="@color/colorPrimary" />
+        android:background="@color/colorPrimaryDark" />
 
 
 </RelativeLayout>

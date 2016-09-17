@@ -34,7 +34,7 @@ public class PlaceGetter extends AsyncTask<View, Void, String> {
     // this is the center of New York
     public static String latitude = "";
     public static String longtitude = "";
-    public static String radius = ""+100;
+    public static String radius = ""+10000;
     String temp;
 
     @Override
